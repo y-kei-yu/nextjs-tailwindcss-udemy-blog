@@ -1,0 +1,16 @@
+{
+  "posts": [
+    {
+      "id": "next-js13-udemy",
+      "title": "Nex.jsをudemyで学ぶ",
+      "content": "sincodeさんの教材でNext.jsを学んでいます。",
+      "createdAt": "2025/10/14"
+    },
+    {
+      "id": "json-server",
+      "title": "json-serverも学ぶ",
+      "content": "json-serverを学んでいます。初めて使います。早く使いこなせるように頑張りたいです。まだまだ技術が未熟なのでしっかり理解しながら学習を進めていきたいです",
+      "createdAt": "2022/10/15"
+    }
+  ]
+}
