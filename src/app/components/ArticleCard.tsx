@@ -27,7 +27,7 @@ const ArticleCard = ({ article }: ArticleCardProps) => {
                     {article.title}
                 </Link>
                 <p className='text-sm text-slate-900 pb-3'>
-                    shincode Published on {article.createdAt}
+                    shincode Published on {new Date(article.createdAt).toLocaleString()}
                 </p>
                 <Link href={`/articles/${article.id}`} className='text-sm text-slate-900 pb-6'>
                     {/* 70文字以上は表示しない */}

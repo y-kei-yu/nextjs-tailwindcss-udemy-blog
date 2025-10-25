@@ -15,7 +15,15 @@ const CreateBlogPage = () => {
 
         setLoading(true);
 
-        await createArticle(id, title, content);
+        //await createArticle(id, title, content);
+        const API_URL = process.env.NEXT_PUBLIC_API_URL;
+        await fetch(`${API_URL}/api/blog`, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({ id, title, content }),
+        });
 
         setLoading(false);
         router.push("/");
@@ -54,7 +62,7 @@ const CreateBlogPage = () => {
                 <button
                     type="submit"
                     className={`py-2 px-4 border rounded-md 
-                    ${loading ? "bg-orange-300 cursor-not-allowed w-16 h-16 border-[5px] border-sky-400 rounded-full  border-t-transparent animate-spin" : "bg-orange-500"}`}
+                    ${loading ? "bg-orange-300 cursor-not-allowed " : "bg-orange-500"}`}
                     disabled={loading}>
                     投稿
                 </button>

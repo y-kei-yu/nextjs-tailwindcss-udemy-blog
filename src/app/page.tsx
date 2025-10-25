@@ -2,12 +2,21 @@
 //"use client";
 import { getAllArticles } from "@/blogAPI";
 import ArticleList from "./components/ArticleList";
+import { supabase } from "@/utils/supabaseClient";
 //import { useEffect } from "react";
 
 
 export default async function Home() {
-  const articles = await getAllArticles();
-  console.log(articles);
+  //blogAPIからデータを取得
+  //const articles = await getAllArticles();
+  //console.log(articles);
+
+  const API_URL = process.env.NEXT_PUBLIC_API_URL;
+  const res = await fetch(`${API_URL}/api/blog`, { cache: "no-store" });
+  const articles = await res.json();
+  console.log(articles)
+
+
 
   //CSRの場合の記述方法　export default async function Home()のasyncは削除する
   // useEffect(() => {

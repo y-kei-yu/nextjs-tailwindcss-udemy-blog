@@ -3,10 +3,16 @@ import Image from 'next/image'
 import { getDetailArticle } from '@/blogAPI';
 import DeleteButton from '@/app/components/DeleteButton';
 
-const Article = async ({ params }: { params: { id: string } }) => {
+const Article = async ({ params }: { params: Promise<{ id: string }> }) => {
 
-    const detailArticle = await getDetailArticle(params.id);
-    console.log(detailArticle);
+    //const detailArticle = await getDetailArticle(params.id);
+
+    const API_URL = process.env.NEXT_PUBLIC_API_URL;
+    const { id } = await params;
+    console.log("id", id)
+    const res = await fetch(`${API_URL}/api/blog/${id}`, { next: { revalidate: 60 } });
+    console.log("res", res)
+    const detailArticle = await res.json();
 
 
     return (
